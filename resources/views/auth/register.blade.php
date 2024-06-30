@@ -7,7 +7,7 @@
             {{-- Username --}}
             <div class="mb-4">
                 <label for="username">Username</label>
-                <input type="text" name="username" class="input">
+                <input type="text" name="username" class="input" value="{{ old('username') }}">
                 @error('username')
                     {{ $message }}
                 @enderror
@@ -15,7 +15,7 @@
             {{-- Email --}}
             <div class="mb-4">
                 <label for="email">Email</label>
-                <input type="text" name="email" class="input">
+                <input type="text" name="email" class="input" value="{{ old('email') }}">
                 @error('email')
                     {{ $message }}
                 @enderror
