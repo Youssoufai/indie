@@ -34,7 +34,7 @@ class AuthController extends Controller
 
         //login
         if (Auth::attempt($fields, $request->remeber)) {
-            return redirect()->route('home');
+            return redirect()->route('/');
         } else {
             return back()->withErrors([
                 'failed' => 'The provided credentials do not match our records'
