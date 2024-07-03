@@ -41,7 +41,14 @@
     <h2>Your latest Post</h2>
     <div class="grid grid-cols2 gap-6">
         @foreach ($posts as $post)
-            <x-postCard :post="$post" />
+            <x-postCard :post="$post">
+                {{-- Delete Post --}}
+                <form action="{{ route('posts.destroy') }}" method="POST">
+                    @csrf
+                    <button class="bg-red-500 text-white px-2 py-1 text-xs rounded-md">Delete</button>
+                </form>
+                <p>Delete</p>
+            </x-postCard>
         @endforeach
     </div>
     <div>
