@@ -6,7 +6,7 @@
     {{-- Author and Date --}}
     <div class="text-xs font-light mb-4">
         <span>Posted by {{ $post->created_at->diffForHumans() }} </span>
-        <a href="" class="text-blue-500 font-medium">USERNAME</a>
+        <a href="" class="text-blue-500 font-medium"> {{ auth()->user()->username }} </a>
         {{-- Body --}}
         @if ($full)
             <div class="text-sm">

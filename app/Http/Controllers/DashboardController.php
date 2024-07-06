@@ -10,7 +10,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $posts = Auth::user()->posts()->latest()->paginate(6);
+        $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login')->withErrors('Please log in to access the dashboard.');
+        }
+
+        $posts = $user->posts()->latest()->paginate(6);
         return view('users.dashboard', ['posts' => $posts]);
     }
 }

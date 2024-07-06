@@ -7,8 +7,8 @@
             </h2>
             <div class="text-xs font-light mb-4">
                 <span>Posted by {{ $post->created_at->diffForHumans() }} </span>
-                <a href="" class="text-blue-500 font-medium">USERNAME</a>
-                <div class="txt-sm">
+                <a href="" class="text-blue-500 font-medium"> {{ auth()->user()->username }} </a>
+                <div class="text-sm">
                     <p> {{ Str::words($post->body, 15) }} </p>
                 </div>
             </div>
