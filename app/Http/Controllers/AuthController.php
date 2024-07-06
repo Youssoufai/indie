@@ -21,7 +21,7 @@ class AuthController extends Controller
         $user = User::create($fields);
         Auth::login($user);
         // Redirect
-        return redirect()->intended('/dashboard');
+        return redirect()->route('home');
     }
     public function login(Request $request)
     {
