@@ -1,15 +1,20 @@
 <x-layout>
-    <h1>Hello {{ auth()->user()->username }}</h1>
+    <h1>Welcom {{ auth()->user()->username }} you have {{ $posts->total() }} posts </h1>
     {{-- Create Post Form --}}
 
     <div class="card mb-4">
         <h2 class="font-bold mb-4">Create a new post</h2>
         @if (session('success'))
             {{-- Session Messages --}}
+
             <div class="mb-4">
 
                 {{--  <x-flashMsg msg="Your post was created" bg="bg-yellow-500" /> --}}
             </div>
+            {{--         @elseif (session('delete'))
+            <div class="mb-2">
+                <x-flashMsg msg="{{ session('delete') }}" bg="bg-red-500" />
+            </div> --}}
         @endif
 
         <form action="{{ route('posts.store') }}" method="POST">
@@ -41,7 +46,13 @@
     <h2>Your latest Post</h2>
     <div class="grid grid-cols2 gap-6">
         @foreach ($posts as $post)
-            <x-postCard :post="$post" />
+            <x-postCard :post="$post">
+                <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="bg-red-500 text-white mx-3 py-1 text-xs rounded-md">Delete</button>
+                </form>
+            </x-postCard>
         @endforeach
     </div>
     <div>

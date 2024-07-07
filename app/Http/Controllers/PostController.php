@@ -15,6 +15,7 @@ class PostController extends Controller
     {
         //
         $posts = Post::latest()->paginate(5);
+        dd('ok');
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -64,5 +65,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        $post->delete();
+
+        return back()->with('delete', 'Your post was deleted');
     }
 }
